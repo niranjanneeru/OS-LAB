@@ -9,6 +9,7 @@ typedef struct {
     int ct;
     int tat;
     int wt;
+    int state;
 } process;
 
 void sort(process **, int, int, const char *, char, const char *);
@@ -33,9 +34,6 @@ void merge(process **collection, int start, int mid,int end, const char *var, ch
     if (strcmp(var, "at") == 0) {
         flag = 1;
     }
-    if (strcmp(sort, "sjf") == 0) {
-        type = 1;
-    }
 
     int n1 = mid - start + 1;
     int n2 = end - mid;
@@ -50,29 +48,16 @@ void merge(process **collection, int start, int mid,int end, const char *var, ch
         R[i] = collection[mid+1+i];
     }
 
-    int i = 0,j=0,k=0;
+    int i = 0,j=0,k=start;
     while (i<n1 && j<n2){
         if(flag == 1) {
             if(order == 'a') {
-                if (L[i]->at < R[j]->at) {
+                if (L[i]->at <= R[j]->at) {
                     collection[k] = L[i];
                     i++;
                 } else if (L[i]->at > R[j]->at) {
                     collection[k] = R[j];
                     j++;
-                }else{
-                    if(type == 1){
-                        if(L[i]->bt <= R[j]->bt){
-                            collection[k] = L[i];
-                            i++;
-                        }else{
-                            collection[k] = R[j];
-                            j++;
-                        }
-                    } else{
-                        collection[k] = L[i];
-                        i++;
-                    }
                 }
             }else{
                 if (L[i]->at >= R[j]->at) {

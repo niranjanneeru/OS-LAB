@@ -59,8 +59,8 @@ int main() {
     float wt_avg = (float) wt / n;
     float tat_avg = (float) tat / n;
 
-    printf("Average Waiting Time: %f\n", wt_avg);
-    printf("Average Turn Around Time: %f", tat_avg);
+    printf("Average Waiting Time: %.2f\n", wt_avg);
+    printf("Average Turn Around Time: %.2f", tat_avg);
 
 
     for (int i = 0; i < n; ++i) {
