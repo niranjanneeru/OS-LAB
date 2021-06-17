@@ -26,6 +26,7 @@ int main() {
     }
 
     sort(collection, 0, n - 1, "at", 'a',"fcfs");
+
     int curr = 0;
     if (collection[0]->at != 0) {
         curr = collection[0]->at;

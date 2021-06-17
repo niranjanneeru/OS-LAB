@@ -9,7 +9,9 @@ typedef struct {
     int ct;
     int tat;
     int wt;
+    int rem_bt;
     int state;
+    int priority;
 } process;
 
 void sort(process **, int, int, const char *, char, const char *);
