@@ -62,7 +62,7 @@ int main() {
     }
 
     if (!(bankers(allocation, need, finish, work, p, r))) {
-        printf("Deadlock");
+        printf("\nDeadlock\n");
     }
 
     system("clear");
