@@ -2,7 +2,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <pthread.h>
-# include <unistd.h>
 
 sem_t empty; // indicate number of empty blocks in buffer
 sem_t full; // indicate number of full blocks in buffer
@@ -15,7 +14,6 @@ pthread_mutex_t mutex; // control mutex
 void *producer() {
     int item;
     while (1) {
-//        sleep(1);
         item = rand() % 1000;
         sem_wait(&empty);
         pthread_mutex_lock(&mutex);
@@ -30,7 +28,6 @@ void *producer() {
 void *consumer() {
     int item;
     while (1) {
-//        sleep(1);
         sem_wait(&full);
         pthread_mutex_lock(&mutex);
         item = buffer[out];
@@ -64,5 +61,3 @@ int main() {
     free(buffer);
     return 0;
 }
-
-//  gcc -pthread prod.c
